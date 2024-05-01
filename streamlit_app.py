@@ -40,4 +40,11 @@ if ingredients_list:
 
     if time_to_insert:
         session.sql(my_insert_stmt).collect()
-        st.write('Your Smoothie is Ordered,'  +name_on_order+ '!')
+        st.write('Your Smoothie is Ordered,'  +name_on_order+ '!',icon = '✅')
+
+
+#New section to display fruitvice nutrition information
+import requests
+fruitvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+#st.text(fruitvice_response.json)
+fv_df = st.dataframe(data=fruitvice_response.josn(),use_container_width=True)
